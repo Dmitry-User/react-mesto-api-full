@@ -1,0 +1,32 @@
+.profile__edit {
+  width: 24px;
+  height: 24px;
+  margin: 8px 0 0 19px;
+  padding: 0;
+  border: 1px solid #fff;
+  outline: none;
+  box-sizing: border-box;
+  background-image: url(../../../images/edit-icon.svg);
+  background-size: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .profile__edit {
+    width: 22px;
+    height: 22px;
+    margin-top: 3px;
+  }
+}
+
+@media (max-width: 618px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 10px;
+    background-size: 7.5px;
+  }
+}

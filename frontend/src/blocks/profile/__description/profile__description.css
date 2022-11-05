@@ -1,0 +1,16 @@
+.profile__description {
+  width: 336px;
+  margin: 0 0 0 30px;
+}
+
+@media (max-width: 768px) {
+  .profile__description {
+    margin: 0 0 32px 0;
+  }
+}
+
+@media (max-width: 618px) {
+  .profile__description {
+    width: 282px;
+  }
+}

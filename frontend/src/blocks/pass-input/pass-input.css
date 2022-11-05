@@ -1,0 +1,13 @@
+.pass-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 25px 13px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  background: transparent;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+}

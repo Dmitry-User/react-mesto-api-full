@@ -1,0 +1,10 @@
+.form__error {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 30px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+}

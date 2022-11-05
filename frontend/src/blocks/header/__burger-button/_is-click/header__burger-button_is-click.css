@@ -1,0 +1,14 @@
+.header__burger-button_is-click::before {
+  transform: rotate(45deg) translate(7px, 6px);
+  transition: .5s ease-in-out;
+}
+
+.header__burger-button_is-click span {
+  transform: scale(.1);
+  transition: .5s ease-in-out;
+}
+
+.header__burger-button_is-click::after {
+  transform: rotate(135deg) translate(-6px, 6px);
+  transition: .5s ease-in-out;
+}

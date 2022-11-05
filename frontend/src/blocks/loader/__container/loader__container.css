@@ -1,0 +1,7 @@
+.loader__container {
+  width: 30vmin;
+  height: 30vmin;
+  position: relative;
+  perspective: 1000px;
+  color: #61DAFB;
+}

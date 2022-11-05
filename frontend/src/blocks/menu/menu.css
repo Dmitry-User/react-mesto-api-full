@@ -1,0 +1,18 @@
+.menu {
+  display: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 142px;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  opacity: 1;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  transition: all .5s ease-in-out;
+}
+
+@media (max-width: 618px) {
+  .menu {
+    display: flex;
+  }
+}

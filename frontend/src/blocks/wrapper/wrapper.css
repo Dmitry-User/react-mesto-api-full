@@ -1,0 +1,14 @@
+.wrapper {
+  width: 100%;
+  max-width: 880px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+@media (max-width: 618px) {
+  .wrapper {
+    grid-template-rows: auto auto 1fr auto;
+  }
+}

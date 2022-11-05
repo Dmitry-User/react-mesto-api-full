@@ -1,0 +1,10 @@
+.register__signin {
+  margin: 15px 0 0;
+  display: flex;
+  }
+
+  @media (max-width: 618px) {
+    .register__signin {
+      margin-top: 20px;
+    }
+  }

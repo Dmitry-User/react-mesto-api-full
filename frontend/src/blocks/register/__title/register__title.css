@@ -1,0 +1,16 @@
+.register__title {
+  margin: 20px 0 50px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+@media (max-width: 460px) {
+  .register__title {
+    margin: 0 0 40px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

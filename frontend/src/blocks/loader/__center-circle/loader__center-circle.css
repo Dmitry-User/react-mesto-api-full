@@ -1,0 +1,11 @@
+.loader__center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 17%;
+  height: 17%;
+  border-radius: 100%;
+  background: currentColor;
+}

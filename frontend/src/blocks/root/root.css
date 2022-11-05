@@ -1,0 +1,12 @@
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-color: #000;
+}
+
+/* убирает фон инпута) */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 6000s 0s, color 6000s 0s;
+}
