@@ -8,7 +8,7 @@ export const request = ({ url, method, token, data }) => {
       "Content-Type": "application/json",
       ...(!!token && { Authorization: `Bearer ${token}` }),
     },
-    ...(!!data && { body: JSON.stringify(data) }),
+    ...(!!data && { body: JSON.stringify(data) }), // опциональное добавление поля в бЪект
   })
   .then((res) => {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
