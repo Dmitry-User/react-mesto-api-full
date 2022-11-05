@@ -1,8 +1,8 @@
 class Api {
   constructor() {
-    this._baseUrl = "https://mesto.nomoreparties.co/v1/cohort-47";
+    this._baseUrl = "https://api.goodplaces.nomoredomains.icu";
     this._headers = {
-      authorization: "5755190e-89aa-4139-b42f-16592ed204be",
+      // authorization: "5755190e-89aa-4139-b42f-16592ed204be",
       "Content-Type": "application/json",
     };
   }

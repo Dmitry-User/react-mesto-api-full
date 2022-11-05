@@ -1,4 +1,4 @@
-const BASE_URL = "https://auth.nomoreparties.co";
+const BASE_URL = "https://goodplaces.nomoredomains.icu";
 
 export const request = ({ url, method, token, data }) => {
   return fetch(`${BASE_URL}${url}`, {
