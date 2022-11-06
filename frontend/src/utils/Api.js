@@ -3,6 +3,7 @@ class Api {
     this._baseUrl = "https://api.goodplaces.nomoredomains.icu";
     this._headers = {
       // authorization: "5755190e-89aa-4139-b42f-16592ed204be",
+      'Accept': 'application/json',
       "Content-Type": "application/json",
     };
   }
