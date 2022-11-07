@@ -1,5 +1,4 @@
 {
-  "homepage": "http://Dmitry-User.github.io/react-mesto-auth",
   "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
@@ -15,8 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "deploy": "npm run build && scp -r ./build/* dmitry-admin@62.84.:/home/dmitry-admin/react-mesto-api-full/frontend",
-    "ghdeploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./build/* dmitry-admin@158.160.37.51:/home/dmitry-admin/react-mesto-api-full/frontend/build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
