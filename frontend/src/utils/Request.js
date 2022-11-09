@@ -1,12 +1,12 @@
-const BASE_URL = "https://auth.nomoreparties.co";
+const BASE_URL = "https://api.goodplaces.nomoredomains.icu";
 
-export const request = ({ url, method, token, data }) => {
+export const request = ({ url, method, data }) => {
   return fetch(`${BASE_URL}${url}`, {
     method,
+    credentials: 'include',
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      ...(!!token && { Authorization: `Bearer ${token}` }),
     },
     ...(!!data && { body: JSON.stringify(data) }),
   })

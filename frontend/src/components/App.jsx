@@ -48,10 +48,8 @@ const App = () => {
 
   useEffect(() => {
     const checkToken = () => {
-      const token = localStorage.getItem("token");
-      if (!token) return;
       auth
-        .getContent(token)
+        .getContent()
         .then((res) => {
           setEmailUser(res.data.email);
           setLoggetIn(true);

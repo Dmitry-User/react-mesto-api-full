@@ -16,10 +16,9 @@ export const authorize = (password, email) => {
   });
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
   return request({
     url: "/users/me",
     method: "GET",
-    token,
   });
 };
