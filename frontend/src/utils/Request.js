@@ -5,7 +5,7 @@ export const request = ({ url, method, data }) => {
     method,
     credentials: 'include',
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
     },
     ...(!!data && { body: JSON.stringify(data) }),

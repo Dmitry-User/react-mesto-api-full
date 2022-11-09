@@ -1,74 +1,51 @@
-class Api {
-  constructor() {
-    this._baseUrl = "https://api.goodplaces.nomoredomains.icu";
-    this._headers = {
-      // authorization: "5755190e-89aa-4139-b42f-16592ed204be",
-      "Content-Type": "application/json",
-    };
-  }
+import { request } from "./Request";
 
-  _getResponse(res) {
-    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-  }
+export const setUserInfo = (name, about) => {
+  return request({
+    url: "/users/me",
+    method: "PATCH",
+    data: { name, about },
+  });
+};
 
-  setUserInfo(userData) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: userData.name,
-        about: userData.about,
-      }),
-    }).then(this._getResponse);
-  }
+export const getUserInfo = () => {
+  return request({
+    url: "/users/me",
+  });
+};
 
-  getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
-    }).then(this._getResponse);
-  }
+export const setAvatar = (avatar) => {
+  return request({
+    url: "/users/me/avatar",
+    method: "PATCH",
+    data: { avatar },
+  });
+};
 
-  setAvatar(userData) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        avatar: userData.avatar,
-      }),
-    }).then(this._getResponse);
-  }
+export const getInitialCards = () => {
+  return request({
+    url: "/cards",
+  });
+};
 
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then(this._getResponse);
-  }
+export const addCard = (name, link) => {
+  return request({
+    url: "/cards",
+    method: "POST",
+    data: { name, link },
+  });
+};
 
-  addCard(cardData) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: cardData.name,
-        link: cardData.link,
-      }),
-    }).then(this._getResponse);
-  }
+export const deleteCard = (cardId) => {
+  return request({
+    url: `/cards/${cardId}`,
+    method: "DELETE",
+  });
+};
 
-  deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._getResponse);
-  }
-
-  changeLikeCardStatus(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: isLiked ? "PUT" : "DELETE",
-      headers: this._headers,
-    }).then(this._getResponse);
-  }
-}
-
-const api = new Api();
-export default api;
+export const changeLikeCardStatus = (cardId, isLiked) => {
+  return request({
+    url: `/cards/${cardId}/likes`,
+    method: isLiked ? "PUT" : "DELETE",
+  });
+};

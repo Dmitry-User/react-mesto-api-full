@@ -12,7 +12,7 @@ import EditProfilePopup from "./EditProfilePopup";
 import ConfirmDeletePopup from "./ConfirmDeletePopup";
 import AddPlacePopup from "./AddPlacePopup";
 import ProtectedRoute from "./ProtectedRoute";
-import api from "../utils/Api";
+import * as api from "../utils/Api";
 import * as auth from "../utils/Auth";
 import InfoTooltip from "./InfoTooltip";
 import LoadingPage from "./LoadingPage";
@@ -51,7 +51,7 @@ const App = () => {
       auth
         .getContent()
         .then((res) => {
-          setEmailUser(res.data.email);
+          setEmailUser(res.email);
           setLoggetIn(true);
           history.push("/");
         })
@@ -61,10 +61,10 @@ const App = () => {
     checkToken();
   }, []);
 
-  const handleUpdateUser = (user) => {
+  const handleUpdateUser = ({ name, about }) => {
     setIsLoading(true);
     api
-      .setUserInfo(user)
+      .setUserInfo(name, about)
       .then((newUser) => {
         setCurrentUser(newUser);
         closeAllPopups();
@@ -73,10 +73,10 @@ const App = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const handleUpdateAvatar = (user) => {
+  const handleUpdateAvatar = ({ avatar }) => {
     setIsLoading(true);
     api
-      .setAvatar(user)
+      .setAvatar(avatar)
       .then((newAvatar) => {
         setCurrentUser(newAvatar);
         closeAllPopups();
@@ -85,10 +85,10 @@ const App = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const handleAddPlaceSubmit = (cardData) => {
+  const handleAddPlaceSubmit = ({ name, link }) => {
     setIsLoading(true);
     api
-      .addCard(cardData)
+      .addCard(name, link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -98,7 +98,7 @@ const App = () => {
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -156,8 +156,7 @@ const App = () => {
   const handleLogin = (password, email) => {
     return auth
       .authorize(password, email)
-      .then((data) => {
-        localStorage.setItem("token", data.token);
+      .then(() => {
         setEmailUser(email);
         setLoggetIn(true);
         history.push("/");
@@ -169,7 +168,6 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
     setEmailUser("");
     setLoggetIn(false);
     history.push("/sign-in");
