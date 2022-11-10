@@ -44,7 +44,7 @@ const App = () => {
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoadingPage(false));
-  }, []);
+  }, [loggedIn]);
 
   useEffect(() => {
     const checkToken = () => {
@@ -167,7 +167,7 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    return auth
+    auth
       .logout()
       .then(() => {
         setEmailUser("");
