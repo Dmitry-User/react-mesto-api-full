@@ -6,16 +6,17 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 const auth = (req, res, next) => {
   const { authorization } = req.cookies;
+  console.log(authorization);
 
   if (!authorization) {
     throw new UnauthorizedError('Необходима авторизация');
   }
 
-  const token = authorization.replace('Bearer', '');
+  // const token = authorization.replace('Bearer', '');
   let payload;
 
   try {
-    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET);
+    payload = jwt.verify(authorization, NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET);
   } catch (err) {
     next(new UnauthorizedError('Необходима авторизация'));
   }

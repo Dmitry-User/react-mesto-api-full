@@ -22,3 +22,10 @@ export const getContent = () => {
     method: "GET",
   });
 };
+
+export const logout = () => {
+  return request({
+    url: "/logout",
+    method: "GET",
+  });
+};

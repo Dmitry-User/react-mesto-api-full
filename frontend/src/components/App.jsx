@@ -57,7 +57,6 @@ const App = () => {
         })
         .catch((err) => console.log(err));
     };
-
     checkToken();
   }, []);
 
@@ -168,9 +167,16 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    setEmailUser("");
-    setLoggetIn(false);
-    history.push("/sign-in");
+    return auth
+      .logout()
+      .then(() => {
+        setEmailUser("");
+        setLoggetIn(false);
+        history.push("/sign-in");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleInfoTooltip = (status) => {
