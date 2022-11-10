@@ -115,7 +115,7 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET,
         { expiresIn: '7d' },
       );
-      res
+      return res
         .cookie('authorization', token, {
           httpOnly: true,
           maxAge: 3600000 * 24 * 7,
