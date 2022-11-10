@@ -28,6 +28,7 @@ app.use(cors({
   origin: [
     'https://goodplaces.nomoredomains.icu',
     'http://goodplaces.nomoredomains.icu',
+    'https://localhost:3000',
     'http://localhost:3000',
   ],
   credentials: true,

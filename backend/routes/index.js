@@ -19,7 +19,7 @@ router.post('/signin', verifyLogin, login);
 
 router.use('/users', auth, userRouter);
 router.use('/cards', auth, cardsRouter);
-router.get('/logout', auth, logout);
+router.get('/signout', auth, logout);
 
 router.use('*', (req, res, next) => {
   next(new NotFoundError('Запрашиваемый адрес не найден'));
