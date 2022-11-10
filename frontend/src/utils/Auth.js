@@ -25,7 +25,7 @@ export const getContent = () => {
 
 export const logout = () => {
   return request({
-    url: "/logout",
+    url: "/signout",
     method: "GET",
   });
 };
