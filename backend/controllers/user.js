@@ -115,11 +115,13 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET,
         { expiresIn: '7d' },
       );
-      return res
+      res
         .cookie('authorization', token, {
           httpOnly: true,
           maxAge: 3600000 * 24 * 7,
           sameSite: true,
+          secure: true,
+          domain: 'api.goodplaces.nomoredomains.icu',
         })
         .send({ message: 'Авторизация прошла успешно!' });
     })
