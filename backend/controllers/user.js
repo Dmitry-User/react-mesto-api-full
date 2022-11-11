@@ -120,8 +120,6 @@ const login = (req, res, next) => {
           httpOnly: true,
           maxAge: 3600000 * 24 * 7,
           sameSite: true,
-          secure: true,
-          domain: 'api.goodplaces.nomoredomains.icu',
         })
         .send({ message: 'Авторизация прошла успешно!' });
     })
