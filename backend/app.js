@@ -2,11 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const limiter = require('express-rate-limit');
-const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const router = require('./routes');
+const cors = require('./middlewares/cors');
 const handleError = require('./middlewares/handle-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -24,15 +24,7 @@ app.use(limiter({
   windowMs: 10 * 60 * 1000, // за 10 минут
   max: 100, // можно совершить максимум 100 запросов с одного IP
 }));
-app.use(cors({
-  origin: [
-    'https://goodplaces.nomoredomains.icu',
-    'http://goodplaces.nomoredomains.icu',
-    'https://localhost:3000',
-    'http://localhost:3000',
-  ],
-  credentials: true,
-}));
+app.use(cors);
 app.use(cookieParser());
 app.use(helmet());
 app.use(express.json()); // встроенный метод, вместо body-parser
