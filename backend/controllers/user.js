@@ -128,8 +128,12 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
-const logout = (req, res) => {
-  res.clearCookie('authorization').send({ message: 'Вы вышли из профиля' });
+const logout = (req, res, next) => {
+  try {
+    res.clearCookie('authorization').send({ message: 'Вы вышли из профиля' });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = {
