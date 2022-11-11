@@ -20,10 +20,12 @@ mongoose.connect(MONGO_URL);
 const app = express();
 
 app.use(requestLogger); // логгер запросов
-app.use(limiter({
-  windowMs: 10 * 60 * 1000, // за 10 минут
-  max: 100, // можно совершить максимум 100 запросов с одного IP
-}));
+app.use(
+  limiter({
+    windowMs: 10 * 60 * 1000, // за 10 минут
+    max: 100, // можно совершить максимум 100 запросов с одного IP
+  }),
+);
 app.use(
   cors({
     origin: [
