@@ -36,26 +36,36 @@ const App = () => {
   const [isLoadingPage, setIsLoadingPage] = useState(true);
 
   useEffect(() => {
-    setIsLoadingPage(true);
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userInfo, cards]) => {
-        setCurrentUser(userInfo);
-        setCards(cards);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoadingPage(false));
-  }, []);
+    if (loggedIn) {
+      setIsLoadingPage(true);
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userInfo, cards]) => {
+          setCurrentUser(userInfo);
+          setCards(cards);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setIsLoadingPage(false));
+      }
+  }, [loggedIn]);
 
   useEffect(() => {
     const checkToken = () => {
       auth
-        .getContent()
+        .getToken()
         .then((res) => {
+          if (!res.ok) {
+            history.push("/signin");
+            setLoggetIn(false);
+            setIsLoadingPage(false);
+          }
           setEmailUser(res.email);
           setLoggetIn(true);
           history.push("/");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => setIsLoadingPage(false));
     };
     checkToken();
   }, []);
@@ -144,7 +154,7 @@ const App = () => {
       .register(password, email)
       .then(() => {
         handleInfoTooltip(true);
-        history.push("/sign-in");
+        history.push("/signin");
       })
       .catch((err) => {
         handleInfoTooltip(false);
@@ -172,7 +182,7 @@ const App = () => {
       .then(() => {
         setEmailUser("");
         setLoggetIn(false);
-        history.push("/sign-in");
+        history.push("/signin");
       })
       .catch((err) => {
         console.log(err);
