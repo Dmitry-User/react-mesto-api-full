@@ -31,7 +31,6 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(express.json()); // встроенный метод, вместо body-parser
 app.use(router);
-
 app.use(errorLogger); // логгер ошибок
 app.use(errors());
 app.use(handleError);
