@@ -4,6 +4,7 @@ export const request = ({ url, method, data }) => {
   return fetch(`${BASE_URL}${url}`, {
     method,
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     credentials: 'include',
