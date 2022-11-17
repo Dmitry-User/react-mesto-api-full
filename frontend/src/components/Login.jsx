@@ -2,7 +2,8 @@ import useForm from "../hooks/useForm";
 import PasswordInput from "./PasswordInput";
 const initValues = { password: "", email: "" };
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, isLoading }) => {
+  const buttonText = isLoading ? "Подключение..." : "Войти";
   const { values, handleChange, errors, isValidForm } = useForm(initValues);
 
   const handleSubmit = (e) => {
@@ -37,10 +38,11 @@ const Login = ({ onLogin }) => {
         </label>
         <button
           type="submit"
-          aria-label="Войти"
           className={`login__submit ${!isValidForm && "login__submit_disable"}`}
+          disabled={isLoading}
+          aria-label={buttonText}
         >
-          Войти
+          {buttonText}
         </button>
       </form>
     </section>

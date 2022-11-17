@@ -3,7 +3,8 @@ import useForm from "../hooks/useForm";
 import PasswordInput from "./PasswordInput";
 const initValues = { password: "", email: "" };
 
-const Register = ({ onRegister }) => {
+const Register = ({ onRegister, isLoading }) => {
+  const buttonText = isLoading ? "Регистрация..." : "Зарегистрироваться";
   const { values, handleChange, errors, isValidForm } = useForm(initValues);
 
   const handleSubmit = (e) => {
@@ -38,10 +39,11 @@ const Register = ({ onRegister }) => {
         </label>
         <button
           type="submit"
-          aria-label="Войти"
+          disabled={isLoading}
           className={`register__submit ${!isValidForm && "register__submit_disable"}`}
+          aria-label={buttonText}
         >
-          Зарегистрироваться
+          {buttonText}
         </button>
       </form>
       <div className="register__signin">

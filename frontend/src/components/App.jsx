@@ -150,6 +150,7 @@ const App = () => {
   };
 
   const handleRegister = (password, email) => {
+    setIsLoading(true);
     return auth
       .register(password, email)
       .then(() => {
@@ -159,10 +160,12 @@ const App = () => {
       .catch((err) => {
         handleInfoTooltip(false);
         console.log(err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleLogin = (password, email) => {
+    setIsLoading(true);
     return auth
       .authorize(password, email)
       .then(() => {
@@ -173,7 +176,8 @@ const App = () => {
       .catch((err) => {
         handleInfoTooltip(false);
         console.log(err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleLogout = () => {
@@ -217,10 +221,10 @@ const App = () => {
         <main className="content">
           <Switch>
             <Route path="/sign-in">
-              <Login onLogin={handleLogin} />
+              <Login onLogin={handleLogin} isLoading={isLoading}/>
             </Route>
             <Route path="/sign-up">
-              <Register onRegister={handleRegister} />
+              <Register onRegister={handleRegister} isLoading={isLoading}/>
             </Route>
             <ProtectedRoute path="/" loggedIn={loggedIn}>
               <Main
