@@ -1,10 +1,17 @@
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   background-color: #000;
 }
 
+#root {
+  height: 100%;
+}
 /* убирает фон инпута) */
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
